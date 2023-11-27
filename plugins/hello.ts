@@ -1,8 +1,7 @@
 import {
   Plugin,
 } from "$fresh/server.ts";
-// import { Hello } from "../components/Hello.tsx";
-import Home from "https://raw.githubusercontent.com/hashrock/fresh-badminton-site/main/routes/member.tsx"
+import { Hello } from "../components/Hello.tsx";
 
 export default function helloPlugin(): Plugin {
   return {
@@ -10,11 +9,17 @@ export default function helloPlugin(): Plugin {
     routes: [
       {
         path: "/hello",
-        component: Home,
+        component: Hello,
         async handler(_req, ctx) {
           return await ctx.render("Hello");
-        },
+        }
       },
     ],
+    islands: {
+      baseLocation: "https://raw.githubusercontent.com/hashrock/fresh-components-beta/main/components/Map.tsx",
+      paths: [
+        "Map.tsx",
+      ]
+    }
   };
 }
